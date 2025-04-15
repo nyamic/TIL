@@ -138,4 +138,88 @@
 
 
 
-//
+// // #1330
+// #include <iostream>
+// int main(){
+//     using namespace std;
+
+//     int numberA, numberB;
+//     cin >> numberA >> numberB;
+
+//     if(numberA > numberB)
+//     {
+//         cout << ">" << endl;
+//     }
+//     else if(numberA < numberB)
+//     {
+//         cout << "<" << endl;
+//     }
+//     else{
+//         cout << "==" << endl;
+//     }
+
+//     return 0;
+// }
+
+
+
+// // #2753
+// #include <iostream>
+// int main(){
+//     using namespace std;
+
+//     int year;
+//     cin >> year;
+
+//     int isLeapYear = ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+//     cout << isLeapYear;
+
+//     // if ((year % 4 == 0) && (year % 100 != 0) )
+//     // {
+//     //     cout << 1;
+//     // }
+//     // else
+//     // {
+//     //     cout << 0;
+//     // }
+
+//     return 0;
+// }
+
+
+
+
+
+
+// // #9498
+// #include <iostream>
+// int main(){
+//     using namespace std;
+
+//     int score;
+//     cin >> score;
+
+//     if(score >= 90)
+//     {
+//         cout << "A";
+//     }
+//     else if (score >= 80)
+//     {
+//         cout << "B"; 
+//     }
+//     else if (score >= 70)
+//     {
+//         cout << "C"; 
+//     }
+//     else if (score >= 60)
+//     {
+//         cout << "D"; 
+//     }
+//     else
+//     {
+//         cout << "F";
+//     }
+    
+
+//     return 0;
+// }
