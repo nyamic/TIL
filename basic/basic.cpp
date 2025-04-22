@@ -703,13 +703,13 @@
 
 /* 
     getline(cin, s): 공백을 포함한 한 줄 전체를 문자열 s에 입력받는 함수
-    string::find()
-    string::substr():
+    string::find(찾고싶은문자숫자등등): 특정 값 있는 인덱스 구하기기 
+    string::substr(a, b): 인덱스 a부터 b개 자르기
     stringstream
 
     문자 0~9 아스키코드 값은 연속적이므로, (문자형숫자)-(0의 아스키코드값)=정수형숫자
     ex) 문자'1'-문자'0'=정수1
-    stoi(), atoi(): 문자열 전체를 정수로 변환하는 함수
+    stoi(변환할문자열), atoi(변환할문자): 문자열 전체를 정수로 변환하는 함수
 
 
     gemini 코드
@@ -728,11 +728,7 @@
         string s;
         getline(cin, s);
 
-        size_t commaPos = s.find(',');
-        if (commaPos == string::npos) {
-            // 쉼표가 없는 경우 오류 처리 (실제 문제 조건에서는 발생하지 않음)
-            continue;
-        }
+        size_t commaPos = s.find(',');  //size_t: 부호없는정수형 크기 나타낼 때 사용용
 
         string aStr = s.substr(0, commaPos);
         string bStr = s.substr(commaPos + 1);
@@ -1085,3 +1081,77 @@
 //     return 0;
 // }
 
+
+
+
+
+
+// // #15552
+// // cin.tie(NULL); 쓰면 아예 입력 한 번에 다 받고 출력을 하는 거였음음
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     cin.tie(NULL);
+//     ios::sync_with_stdio(false);
+
+//     int n, a, b;
+//     cin >> n;
+
+//     for(int i=0; i<n; ++i)
+//     {
+//         cin >> a >> b;
+//         cout << a + b << "\n";
+//     }
+
+//     return 0;
+// }
+
+
+
+
+// #10818
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <climits>
+int main()
+{
+    using namespace std;
+    cin.tie(NULL);
+    ios::sync_with_stdio(false);
+
+    int n;
+    int min = INT_MIN;
+    int max = INT_MAX;
+    // str = "1234 56 789"
+
+    cin >> n;
+    cin.ignore();
+
+    string str, str2;
+    getline(cin, str);
+
+    for(int i=0; i<n; ++i)
+    {        
+        size_t blankPos = str.find(' ');
+        str2 = str.substr(0, blankPos);
+        str = str.substr(blankPos+1);
+        
+        int num = stoi(str2);
+
+        if (num>max)
+        {
+            max = num;
+        }
+
+        if (num<min)
+        {
+            min = num;
+        }
+    }
+
+    cout << min << " " << max;
+
+    return 0;
+}
