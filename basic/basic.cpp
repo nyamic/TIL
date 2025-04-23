@@ -1110,48 +1110,228 @@
 
 
 
-// #10818
+// #10818 [memo]
+// 문자열 파싱을 넣으면 시간초과가 뜬다.. . .   . 
+
+/*  for문 안에 넣었던 문자열 파싱 코드
+
+    size_t blankPos = str.find(' ');
+        if(blankPos == string::npos)
+        {
+            str2 = str;
+        }
+        else
+        {
+            str2 = str.substr(0, blankPos);
+            str = str.substr(blankPos+1);
+        }
+            int num = stoi(str2);
+*/ 
+        
+        
+        
+// #include <iostream>
+// #include <cmath>
+// #include <string>
+// #include <climits>
+// int main()
+// {
+//     using namespace std;
+//     cin.tie(NULL);
+//     cout.tie(NULL);
+//     ios::sync_with_stdio(false);
+
+//     int n;
+//     int min = INT_MAX;
+//     int max = INT_MIN;
+
+//     cin >> n;
+
+//     int num;
+//     for(int i=0; i<n; ++i)
+//     {        
+//         cin >> num;
+
+//         if (num>max)
+//             max = num;
+
+//         if (num<min)
+//             min = num;
+//     }
+
+//     cout << min << " " << max;
+
+//     return 0;
+// }
+
+
+
+// // #2440
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     int n;
+
+//     cin >> n;
+//     for(int i=n; i>0; --i)
+//     {
+//         for(int j=0; j<i; ++j)
+//         {
+//             cout << "*";
+//         }
+//         cout << "\n";
+//     }
+
+//     return 0;
+// }
+
+
+
+
+
+// // #2441
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     int n;
+
+//     cin >> n;
+//     for(int i=n; i>0; --i)
+//     {
+//         for(int k=0; k<n-i; ++k)
+//         {
+//             cout << " ";
+//         }
+
+//         for(int j=0; j<i; ++j)
+//         {
+//             cout << "*";
+//         }
+//         cout << "\n";
+//     }
+
+//     return 0;
+// }
+
+
+
+// // #2442
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     int n;
+//     cin >> n;
+
+//     for(int i=1; i<=n; ++i)
+//     {
+//         for(int j=0; j<n-i; ++j)
+//         {
+//             cout << " ";
+//         }
+
+//         for(int k=0; k<2*i-1; ++k)
+//         {
+//             cout << "*";
+//         }
+        
+//         cout << "\n";
+//     }
+
+//     return 0;
+// }
+
+
+
+
+// // #11721 [unfinished]
+// #include <iostream>
+// #include <string>
+// int main()
+// {
+//     using namespace std;
+//     string s, p;
+//     int strSize;
+
+//     cin >> s;
+//     strSize = s.size();
+    
+//     for(int i=0; i<strSize*0.1; ++i)
+//     {
+//         cout << s.substr(i*10, (i+1)*10) << "\n";
+//     }
+    
+//     if (strSize%10!=0)
+//     {
+//         cout << s.substr((int)(strSize*0.1)*10) << "\n";
+//     }
+
+//     return 0;
+// }
+
+
+
+
+
+// // #9086
+// #include <iostream>
+// #include <string>
+// int main()
+// {
+//     using namespace std;
+
+//     int n;
+//     cin >> n;
+
+//     string s;
+
+//     for(int i=0; i<n; ++i)
+//     {
+//         cin >> s;
+//         cout << s[0] << s[s.size()-1] << "\n";
+//     }
+
+//     return 0;
+// }
+
+
+
+
+// #1463 [memo] [red]
+/* 
+    vertor<int> 벡터 쓰는 이유: 
+    동적으로 배열 크기 정할 수 있음
+    초기화가 간편함
+*/
 #include <iostream>
-#include <cmath>
-#include <string>
-#include <climits>
+#include <vector>
+#include <algorithm>
 int main()
 {
     using namespace std;
-    cin.tie(NULL);
-    ios::sync_with_stdio(false);
 
-    int n;
-    int min = INT_MIN;
-    int max = INT_MAX;
-    // str = "1234 56 789"
-
+    int n; 
     cin >> n;
-    cin.ignore();
 
-    string str, str2;
-    getline(cin, str);
+    vector<int> dp(n+1, 5001);
+    dp[0] = 0;
 
-    for(int i=0; i<n; ++i)
-    {        
-        size_t blankPos = str.find(' ');
-        str2 = str.substr(0, blankPos);
-        str = str.substr(blankPos+1);
-        
-        int num = stoi(str2);
-
-        if (num>max)
-        {
-            max = num;
+    for(int i=3; i<=n; ++i) {
+        if (i >= 3 && dp[i-3] != 5001) {
+            dp[i] = min(dp[i], dp[i-3]+1);
         }
-
-        if (num<min)
-        {
-            min = num;
+        if (i >=5 && dp[i-5] != 5001) {
+            dp[i] = min(dp[i], dp[i-5]+1);
         }
     }
 
-    cout << min << " " << max;
+    if (dp[n] == 5001) {
+        cout << -1 << "\n";
+    } else {
+        cout << dp[n] << "\n";
+    }
 
     return 0;
 }
