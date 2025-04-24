@@ -1299,38 +1299,70 @@
 
 
 
-// #1463 [memo] [red]
-/* 
-    vertor<int> 벡터 쓰는 이유: 
-    동적으로 배열 크기 정할 수 있음
-    초기화가 간편함
-*/
+
+
+// // #10810
+// #include <iostream>
+// int main()
+// {
+//     using namespace std;
+//     int n, m;
+//     cin >> n >> m;
+
+//     int basket[n] = {0}; 
+
+//     for(int h=0; h<m; ++h) {
+//         int i, j, k;
+//         cin >> i >> j >> k;
+
+//         for(int l=i-1; l<j; ++l) {
+//             basket[l] = k;
+//         }
+//     }
+
+//     for(int f=0; f<n; ++f) {
+//         cout << basket[f] << " ";
+//     }   
+
+//     return 0;
+// }
+
+
+
+
+
+// #10811
 #include <iostream>
-#include <vector>
-#include <algorithm>
-int main()
-{
+int main() {
     using namespace std;
 
-    int n; 
-    cin >> n;
+    int n, m;
+    cin >> n >> m;
 
-    vector<int> dp(n+1, 5001);
-    dp[0] = 0;
+    int arr[n]={0};
+    for(int i=1; i<=n; ++i) {
+        arr[i-1] = i;
+    }
+    int arr2[n]={0};
+    for(int i=1; i<=n; ++i) {
+        arr2[i-1] = i;
+    }
 
-    for(int i=3; i<=n; ++i) {
-        if (i >= 3 && dp[i-3] != 5001) {
-            dp[i] = min(dp[i], dp[i-3]+1);
+    for(int i=0; i<m; ++i) {
+        int k, h;
+        cin >> k >> h;
+
+        for(int j=k; j<=h; ++j) {
+          arr[j-1] = arr2[h-(j-k)-1];
         }
-        if (i >=5 && dp[i-5] != 5001) {
-            dp[i] = min(dp[i], dp[i-5]+1);
+
+        for(int a=0; a<n; ++a) {
+            arr2[a] = arr[a];
         }
     }
 
-    if (dp[n] == 5001) {
-        cout << -1 << "\n";
-    } else {
-        cout << dp[n] << "\n";
+    for(int i=0; i<n; ++i) {
+        cout << arr[i] << " ";
     }
 
     return 0;

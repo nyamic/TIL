@@ -140,3 +140,67 @@ int main()
 
     return 0;
 }
+
+
+
+
+
+// #1463 [memo] [red]
+/* 
+    vertor<int> 벡터 쓰는 이유: 
+    동적으로 배열 크기 정할 수 있음
+    초기화가 간편함
+*/
+// #include <iostream>
+// #include <vector>
+// #include <algorithm>
+// int main()
+// {
+//     using namespace std;
+
+//     int n; 
+//     cin >> n;
+
+//     vector<int> dp(n+1, 5001);
+//     dp[0] = 0;
+
+//     for(int i=3; i<=n; ++i) {
+//         if (i >= 3 && dp[i-3] != 5001) {
+//             dp[i] = min(dp[i], dp[i-3]+1);
+//         }
+//         if (i >=5 && dp[i-5] != 5001) {
+//             dp[i] = min(dp[i], dp[i-5]+1);
+//         }
+//     }
+
+//     if (dp[n] == 5001) {
+//         cout << -1 << "\n";
+//     } else {
+//         cout << dp[n] << "\n";
+//     }
+
+//     return 0;
+// }
+
+
+
+
+
+// #1010 [unfinished]
+#include <iostream>
+int main()
+{
+    using namespace std;
+    int T, m, n;
+    cin >> T;
+
+    int dp[30];
+    dp[0] = 1;
+
+    for(int i=1; i<=T; ++i)
+    {
+        cin >> m >> n;
+    }
+
+    return 0;
+}
