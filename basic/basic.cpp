@@ -1331,39 +1331,403 @@
 
 
 
-// #10811
+// // #10811
+// #include <iostream>
+// int main() {
+//     using namespace std;
+
+//     int n, m;
+//     cin >> n >> m;
+
+//     int arr[n]={0};
+//     for(int i=1; i<=n; ++i) {
+//         arr[i-1] = i;
+//     }
+//     int arr2[n]={0};
+//     for(int i=1; i<=n; ++i) {
+//         arr2[i-1] = i;
+//     }
+
+//     for(int i=0; i<m; ++i) {
+//         int k, h;
+//         cin >> k >> h;
+
+//         for(int j=k; j<=h; ++j) {
+//           arr[j-1] = arr2[h-(j-k)-1];
+//         }
+
+//         for(int a=0; a<n; ++a) {
+//             arr2[a] = arr[a];
+//         }
+//     }
+
+//     for(int i=0; i<n; ++i) {
+//         cout << arr[i] << " ";
+//     }
+
+//     return 0;
+// }
+
+
+
+// #1978
+// #include <iostream>
+// int main() {
+//     using namespace std;
+//     cin.tie(NULL);
+//     cout.tie(NULL);
+//     ios::sync_with_stdio(false);
+
+//     int n, a, prime;
+//     cin >> n;
+//     prime = n;
+
+//     for(int i=0; i<n; ++i) {
+//         cin >> a;
+        
+//         if(a==1) {
+//             prime -= 1;
+//             continue;
+//         }
+
+//         for(int j=2; j<a; ++j) {
+//             if(a!=j && a%j==0) {
+//                 prime -= 1;
+//                 break;
+//             }
+//         }
+//     }
+
+//     cout << prime;
+
+//     return 0;
+// }
+
+
+
+
+
+//// #10807
+//#include <iostream>
+//int main() {
+//	using namespace std;
+//
+//	int n, v, vNum=0; 
+//	cin >> n;
+//
+//	int arr[100] = { 0 };
+//
+//	for (int i = 0; i < n; ++i) {
+//		cin >> arr[i];
+//	}
+//
+//	cin >> v;
+//
+//	for (int i = 0; i < n; ++i) {
+//		if (arr[i] == v) {
+//			vNum += 1;
+//		}
+//	}
+//
+//	cout << vNum;
+//
+//	return 0;
+//}
+
+
+
+
+
+// // #11654
+
+// #include <iostream>
+// int main() {
+// 	using namespace std;
+
+// 	char a;
+// 	cin >> a;
+// 	cout << (int)a;
+
+// 	return 0;
+// }
+
+
+
+
+// #10871
+//#include <iostream>
+//#include <vector>
+//int main() {
+//	using namespace std;
+//
+//	int n, x;
+//	cin >> n >> x;
+//
+//	vector<int> A(n);
+//	
+//	for (int i = 0; i < n; ++i) {
+//		cin >> A[i];
+//		if (A[i] < x) {
+//			cout << A[i] << " ";
+//		}
+//	}
+//
+//	return 0;
+//}
+
+
+
+
+// #5597
+//#include <iostream>
+//int main() {
+//	using namespace std;
+//
+//	int submit[30] = { 0 };
+//	int n;
+//
+//
+//	for (int i = 0; i < 28; ++i) {
+//		cin >> n;
+//		submit[n - 1] = n;
+//	}
+//
+//	for (int i = 0; i < 30; ++i) {
+//		if (submit[i] != i + 1) {
+//			cout << i+1 << "\n";
+//		}
+//	}
+//
+//	return 0;
+//}
+
+
+
+
+//// 2562
+//#include <iostream>
+//int main() {
+//	using namespace std;
+//
+//	int arr[9] = { 0 };
+//	int num, max = 0;
+//			
+//	for (int i = 0; i < 9; ++i) {
+//		cin >> arr[i];
+//		if (max < arr[i]) {
+//			max = arr[i];
+//			num = i+1;
+//		}
+//	}
+//
+//	cout << max << "\n";
+//	cout << num;
+//
+//	return 0;
+//}
+
+
+
+
+
+
+// // #2738
+// #include <iostream>
+// #include <vector>
+// int main() {
+//     using namespace std;
+
+//     int n, m;
+//     cin >> n >> m;
+
+//     vector<vector<int>> matA(n, vector<int>(m,0));
+//     vector<vector<int>> matB(n, vector<int>(m,0));
+
+//     for(int i=0; i<n; ++i) {
+//         for(int j=0; j<m; ++j) {
+//             int num;
+//             cin >> num;
+//             matA[i][j] = num;
+//         }
+//     }
+
+//     for(int i=0; i<n; ++i) {
+//         for(int j=0; j<m; ++j) {
+//             int num;
+//             cin >> num;
+//             matB[i][j] = num;
+//         }
+//     }
+
+//     for(int i=0; i<n; ++i) {
+//         for(int j=0; j<m; ++j) {
+//             cout << matA[i][j] + matB[i][j] << " ";
+//         }
+//         cout << "\n";
+//     }
+
+
+
+//     return 0;
+// }
+
+
+
+
+// [unfinished] 2차원배열 단어 수 세기
+// #include <iostream>
+// #include <string>
+// int main() {
+//     using namespace std;
+
+//     string str;
+//     getline(cin, str);
+//     size_t charNum = str.size();
+//     int num = 0;
+//     int pastLoc=0;
+    
+    
+//     while(pastLoc != str.find(' ')) {
+        
+//     }
+
+
+
+//     // for(int i=0; i<charNum; ++i) {
+//     //     if (str[i] == ' ') {
+//     //         if (i==0) continue;
+//     //         num += 1;
+//     //     }
+//     // }
+
+//     cout << num + 1;
+
+//     return 0;
+// }
+
+
+
+
+// // #2444 [purple]
+//    냅다 풀지 말고 머리를 쓸 것
+
+/*
+Q. 입력: 첫째 줄에 N(1 ≤ N ≤ 100)이 주어진다.
+   출력: 첫째 줄부터 2×N-1번째 줄까지 차례대로 별을 출력한다.
+
+    *
+   ***
+  *****
+ *******
+*********
+ *******
+  *****
+   ***
+    *
+
+    
+#include <stdio.h>
+#include <math.h>
+int main() {
+    int N;
+    scanf("%d", &N);
+    for (int i = -N + 1; i < N; i++){
+        for (int j = 0; j < 2*N -abs(i) -1; j++)
+            putchar(j < abs(i) ? 32 : '*');
+        putchar(10);
+    }
+}
+*/
+
+
+// #include <iostream>
+// int main() {
+//     using namespace std;
+
+//     int n;
+//     cin >> n;
+
+//     for(int i=1; i<=n; ++i) {
+
+//         for(int j=i; j<n; ++j) {
+//             cout << " ";
+//         }
+
+//         for(int k=1; k<=2*i-1; ++k) {
+//             cout << "*";
+//         }
+
+//         cout << "\n";
+//     }
+
+
+//     for(int i=n-1; i>0; --i) {
+
+//         for(int j=i; j<n; ++j) {
+//             cout << " ";
+//         }
+
+//         for(int k=1; k<=2*i-1; ++k) {
+//             cout << "*";
+//         }
+
+//         cout << "\n";
+//     }
+
+//     return 0;
+// }
+
+
+
+
+// // #3003
+// #include <iostream>
+// int main() {
+//     using namespace std;
+//     cin.tie(NULL);
+//     cout.tie(NULL);
+
+//     int existing[6] = {1, 1, 2, 2, 2, 8};
+
+//     for(int i=0; i<6; ++i) {
+//         int n;
+//         cin >> n;
+//         existing[i] -= n;
+//         cout << existing[i] << " ";
+//     }
+
+//     return 0;
+// }
+
+
+
+
+
+// #2745
 #include <iostream>
+#include <vector>
+#include <string>
 int main() {
     using namespace std;
 
-    int n, m;
-    cin >> n >> m;
+    string n;
+    int decimal=0, result=0;
 
-    int arr[n]={0};
-    for(int i=1; i<=n; ++i) {
-        arr[i-1] = i;
-    }
-    int arr2[n]={0};
-    for(int i=1; i<=n; ++i) {
-        arr2[i-1] = i;
-    }
+    cin >> n >> decimal;
 
-    for(int i=0; i<m; ++i) {
-        int k, h;
-        cin >> k >> h;
+    size_t nSize = n.size();
 
-        for(int j=k; j<=h; ++j) {
-          arr[j-1] = arr2[h-(j-k)-1];
+    for(int i=0; i<nSize; ++i) {
+
+        int a=1;
+        for(int j=1; j<nSize-i; ++j) {
+            a *= decimal;
         }
 
-        for(int a=0; a<n; ++a) {
-            arr2[a] = arr[a];
-        }
+        result += (int)(n[i]-'A'+10) * a;
     }
 
-    for(int i=0; i<n; ++i) {
-        cout << arr[i] << " ";
-    }
+    cout << result;
 
     return 0;
 }
