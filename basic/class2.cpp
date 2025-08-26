@@ -86,10 +86,49 @@
 
 
 
-// #
-#include <iostream>
-int main() {
+// // #30802
+// // 2025.08.02
+
+// #include <iostream>
+// int main() {
+
+//     // 참가자수n, 사이즈별 신청자수 sizeNumber[6], 묶음수T P 받기
+//     // 사이즈별신청자수 / T + 1 --> 6번반복해서 합한거 출력
+//     // 참가자수 / P + 1 출력, 참가자수 % P 출력
+
+//     using namespace std;
+//     cin.tie(NULL);
+
+//     int n, T, P;
+//     int sizeNumber[6] = {0};
+//     int tNum = 0;
+
+//     cin >> n;
+
+//     for (int i=0; i<6; i++) {
+//         cin >> sizeNumber[i];
+//     }
+
+//     cin >> T;
+//     cin >> P;
 
 
-    return 0;
-}
+//     for (int i=0; i<6; i++) {
+//         tNum += sizeNumber[i] / T;
+
+//         if((sizeNumber[i] % T) != 0) {
+//             tNum += 1;
+//         }
+//     }
+
+//     cout << tNum << "\n";
+
+
+//     cout << n / P << " " << n % P;
+
+
+
+//     return 0;
+// }
+//     return 0;
+// }
