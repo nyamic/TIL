@@ -130,5 +130,106 @@
 
 //     return 0;
 // }
+
+
+
+
+// #18110
+// 2025.08.10
+
+// #include <iostream>
+// #include <cmath>
+// #include <vector>
+
+// int main() {
+    
+//     using namespace std;
+//     cin.tie(NULL);
+
+//     // 의견개수n, opinions[n] 입력
+//     // 위아래에서각각몇명뺄지: round(n * 0.15)
+//     // 크기대로 정렬 (선택정렬 씀)
+//     // 빼고 합계산
+//     // round(합 / (n-뺀사람수)) --> 난이도 출력
+
+//     double n, exceptNum;
+
+//     cin >> n;
+//     vector<double> opinions(n+1);
+
+//     opinions[n] = 0; //sum대신쓰기
+
+//     for(int i=0; i<n; i++) {
+//         cin >> opinions[i];
+//     }
+
+
+//     // 선택정렬
+//     // min 위치 변수에 저장 --> min이랑 min있던곳 swap
+//     // 이걸 5번반복 (2번째 탐색 2번째 위치부터 시작)
+
+
+//     for(int i=0; i<n; i++) {
+
+//         double minNum=i, min;
+
+//         //min찾기
+//         for(int j=i; j<n-1; j++) {
+//             minNum = opinions[minNum] < opinions[j+1] ? minNum : j+1;
+//         }
+
+//         //swap
+//         min = opinions[minNum];
+//         opinions[minNum] = opinions[i];
+//         opinions[i] = min;
+//     }
+
+//     exceptNum = round(n * 0.15);
+
+//     for(int i=exceptNum; i<n-exceptNum; i++) {
+//         opinions[n] += opinions[i];
+//     }
+
+//     cout << round(opinions[n] / (n-exceptNum*2));
+
+//     return 0;
+// }
+
+
+// 근데 정렬 직접 안 쓰고 sort 써도 된다함
+// #include <iostream>
+// #include <vector>
+// #include <algorithm>
+// #include <cmath>
+// using namespace std;
+
+// int main() {
+//     ios::sync_with_stdio(false);
+//     cin.tie(nullptr);
+
+//     int n;
+//     cin >> n;
+
+//     if (n == 0) {
+//         cout << 0 << '\n';
+//         return 0;
+//     }
+
+//     vector<int> a(n);
+//     for (int i = 0; i < n; ++i) cin >> a[i];
+
+//     sort(a.begin(), a.end());
+
+//     int exceptNum;
+//     exceptNum = (int)round(n * 0.15);
+
+//     long long sum = 0;
+//     for (int i = exceptNum; i < n - exceptNum; ++i) sum += a[i];
+
+
+//     double remain = n - 2 * exceptNum;
+
+//     int ans = (int)round((double)sum / remain);
+//     cout << ans << '\n';
 //     return 0;
 // }
