@@ -1,7 +1,7 @@
 // // #4153
-/* 
+/*
     이게 더 짧고 빠른 듯
-    a*a + b*b == c*c || a*a + c*c == b*b || b*b + c*c == a*a 
+    a*a + b*b == c*c || a*a + c*c == b*b || b*b + c*c == a*a
 */
 
 // #include<iostream>
@@ -46,9 +46,6 @@
 //     return 0;
 // }
 
-
-
-
 // // #1546
 
 // #include <iostream>
@@ -81,11 +78,6 @@
 // // 최댓값
 // // 원래평균 / 최댓값 * 100 = 답
 
-
-
-
-
-
 // // #30802
 // // 2025.08.02
 
@@ -112,7 +104,6 @@
 //     cin >> T;
 //     cin >> P;
 
-
 //     for (int i=0; i<6; i++) {
 //         tNum += sizeNumber[i] / T;
 
@@ -123,16 +114,10 @@
 
 //     cout << tNum << "\n";
 
-
 //     cout << n / P << " " << n % P;
-
-
 
 //     return 0;
 // }
-
-
-
 
 // #18110
 // 2025.08.10
@@ -142,7 +127,7 @@
 // #include <vector>
 
 // int main() {
-    
+
 //     using namespace std;
 //     cin.tie(NULL);
 
@@ -163,11 +148,9 @@
 //         cin >> opinions[i];
 //     }
 
-
 //     // 선택정렬
 //     // min 위치 변수에 저장 --> min이랑 min있던곳 swap
 //     // 이걸 5번반복 (2번째 탐색 2번째 위치부터 시작)
-
 
 //     for(int i=0; i<n; i++) {
 
@@ -194,7 +177,6 @@
 
 //     return 0;
 // }
-
 
 // 근데 정렬 직접 안 쓰고 sort 써도 된다함
 // #include <iostream>
@@ -226,10 +208,127 @@
 //     long long sum = 0;
 //     for (int i = exceptNum; i < n - exceptNum; ++i) sum += a[i];
 
-
 //     double remain = n - 2 * exceptNum;
 
 //     int ans = (int)round((double)sum / remain);
 //     cout << ans << '\n';
 //     return 0;
 // }
+
+// #14626
+/*
+    배열에 13자리 입력받기 (입력이 *인 인덱스 기억)
+    sum = *자리 빼고 규칙대로 곱해서 다 더해
+    sum을 10으로 나눴을 때 나머지 구해
+    답: 10 - 나머지
+*/
+// #include <iostream>
+// #include <string>
+// using namespace std;
+
+// int main()
+// {
+//     ios::sync_with_stdio(false);
+//     cin.tie(NULL);
+
+//     char a[13];
+//     int b[13] = {0};
+//     int blank, sum = 0;
+
+//     for (int i = 0; i < 13; i++)
+//     {
+//         cin >> a[i];
+
+//         if (a[i] == '*')
+//         {
+//             blank = i; //짝수번째면 마지막에 3으로 나눠야
+//         }
+//         else
+//         {
+//             b[i] = a[i] - '0';
+
+//             if (i == 0 || i % 2 == 0) // 홀수번째
+//             {
+//                 sum += b[i];
+//             }
+//             else
+//             {
+//                 sum += 3 * b[i];
+//             }
+//         }
+//     }
+
+//     int remain = sum % 10;
+//     int ans;
+
+//     if(blank%2 == 0) {
+//         ans = 10 - remain;
+//     } else{
+//         ans = 10 - (remain / 3);
+//     }
+
+//     cout << ans;
+
+//     return 0;
+// }
+
+// ㅋㅋ 이런게 브루트포스구나;;
+/*
+    문자열로 입력받고 *자리기억, 다른 글자는 숫자로 변환
+    빈칸에 0~9까지 넣어보면서 나머지 0 되면 그게 답
+*/
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    char a[13];
+    int b[13] = {0};
+    int blank, ans = 0;
+
+    for (int i = 0; i < 13; i++)
+    {
+        cin >> a[i];
+
+        if (a[i] == '*')
+        {
+            blank = i;
+        }
+        else
+        {
+            b[i] = a[i] - '0';
+        }
+    }
+
+    for (int i = 0; i < 10; i++)
+    {
+        int sum = 0;
+        b[blank] = i;
+
+        for (int j = 0; j < 13; j++)
+        {
+            if (j == 0 || j % 2 == 0)
+            {
+                sum += b[j];
+            }
+            else
+            {
+                sum += 3 * b[j];
+            }
+        }
+
+        if (sum % 10 == 0)
+        {
+            ans = i;
+            break;
+        }
+    }
+
+    cout << ans;
+
+    return 0;
+}
