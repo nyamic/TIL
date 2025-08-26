@@ -345,32 +345,78 @@
     1-N까지 반복(i):
     반복 다했는데 없으면 0
 */
+// #include <iostream>
+// #include <cmath>
+// #include <string>
+// using namespace std;
+
+// int main()
+// {
+//     int n, ans=0;
+//     cin >> n;
+
+//     for (int i = 1; i <= n; i++)
+//     {
+//         int digits = (int)log10(i) + 1;
+
+//         int sum = i;
+//         string s = to_string(i);
+//         for (int j = 0; j < digits; j++)
+//         {
+//             sum += s[j] - '0';
+//         }
+
+//         if (n == sum)
+//         {
+//             ans = i;
+//             break;
+//         }
+//     }
+
+//     cout << ans;
+
+//     return 0;
+// }
+
+// #11050 이항계수1
+/*
+    n * (n-1) * ... * (n-k)
+    k!
+
+    n=0, k=0일때
+    k 작은쪽으로 계산
+*/
 #include <iostream>
-#include <cmath>
-#include <string>
 using namespace std;
 
 int main()
 {
-    int n, ans=0;
-    cin >> n;
+    int n, k, ans;
+    cin >> n >> k;
 
-    for (int i = 1; i <= n; i++)
+    int a = 1, b = 1;
+
+    if (k == 0)
     {
-        int digits = (int)log10(i) + 1;
-
-        int sum = i;
-        string s = to_string(i);
-        for (int j = 0; j < digits; j++)
+        ans = 1;
+    }
+    else if (n == k)
+    {
+        ans = 1;
+    }
+    else
+    {
+        for (int i = n; i > n - k; --i)
         {
-            sum += s[j] - '0';
+            a *= i;
         }
 
-        if (n == sum)
+        for (int i = k; i >= 1; --i)
         {
-            ans = i;
-            break;
+            b *= i;
         }
+
+        ans = a / b;
     }
 
     cout << ans;
