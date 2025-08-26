@@ -277,51 +277,96 @@
     문자열로 입력받고 *자리기억, 다른 글자는 숫자로 변환
     빈칸에 0~9까지 넣어보면서 나머지 0 되면 그게 답
 */
+// #include <iostream>
+// #include <string>
+// using namespace std;
+
+// int main()
+// {
+//     ios::sync_with_stdio(false);
+//     cin.tie(NULL);
+
+//     char a[13];
+//     int b[13] = {0};
+//     int blank, ans = 0;
+
+//     for (int i = 0; i < 13; i++)
+//     {
+//         cin >> a[i];
+
+//         if (a[i] == '*')
+//         {
+//             blank = i;
+//         }
+//         else
+//         {
+//             b[i] = a[i] - '0';
+//         }
+//     }
+
+//     for (int i = 0; i < 10; i++)
+//     {
+//         int sum = 0;
+//         b[blank] = i;
+
+//         for (int j = 0; j < 13; j++)
+//         {
+//             if (j == 0 || j % 2 == 0)
+//             {
+//                 sum += b[j];
+//             }
+//             else
+//             {
+//                 sum += 3 * b[j];
+//             }
+//         }
+
+//         if (sum % 10 == 0)
+//         {
+//             ans = i;
+//             break;
+//         }
+//     }
+
+//     cout << ans;
+
+//     return 0;
+// }
+
+// #2231 분해합
+/*
+    분해합이 N이래 --> 어떤 수의 분해합을 구한 걸까
+    브루트포스? N까지 다해보기
+
+    각 자리 숫자 구하려면:
+    몇 자리 수인지 알아내기 - 문자열 변환하고 글자수?
+
+    N 입력받기
+    1-N까지 반복(i):
+    반복 다했는데 없으면 0
+*/
 #include <iostream>
+#include <cmath>
 #include <string>
 using namespace std;
 
 int main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
+    int n, ans=0;
+    cin >> n;
 
-    char a[13];
-    int b[13] = {0};
-    int blank, ans = 0;
-
-    for (int i = 0; i < 13; i++)
+    for (int i = 1; i <= n; i++)
     {
-        cin >> a[i];
+        int digits = (int)log10(i) + 1;
 
-        if (a[i] == '*')
+        int sum = i;
+        string s = to_string(i);
+        for (int j = 0; j < digits; j++)
         {
-            blank = i;
-        }
-        else
-        {
-            b[i] = a[i] - '0';
-        }
-    }
-
-    for (int i = 0; i < 10; i++)
-    {
-        int sum = 0;
-        b[blank] = i;
-
-        for (int j = 0; j < 13; j++)
-        {
-            if (j == 0 || j % 2 == 0)
-            {
-                sum += b[j];
-            }
-            else
-            {
-                sum += 3 * b[j];
-            }
+            sum += s[j] - '0';
         }
 
-        if (sum % 10 == 0)
+        if (n == sum)
         {
             ans = i;
             break;
