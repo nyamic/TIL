@@ -1702,32 +1702,42 @@ int main() {
 
 
 
+// #19532 수학은 비대면강의입니다
 
-// #2745
-#include <iostream>
-#include <vector>
-#include <string>
-int main() {
-    using namespace std;
+/* 
+    abcdef 입력받기
+    -999~999 반복: 식 만족하는지
+    만족하면 거기서 break하고 x, y가 답
+    x, y 출력
+*/
 
-    string n;
-    int decimal=0, result=0;
+// #include <iostream>
+// int main() {
+//     using namespace std;
+//     cin.tie(NULL);
+//     cout.tie(NULL);
 
-    cin >> n >> decimal;
+//     int a, b, c, d, e, f, x, y;
 
-    size_t nSize = n.size();
+//     cin >> a;
+//     cin >> b;
+//     cin >> c;
+//     cin >> d;
+//     cin >> e;
+//     cin >> f;
 
-    for(int i=0; i<nSize; ++i) {
+//     for(int i = -999; i <= 999; i++)
+//     {
+//         for(int j = -999; j <= 999; j++)
+//         {
+//             if ((a*i + b*j == c) && (d*i + e*j == f))
+//             {
+//                 x = i;
+//                 y = j;
+//                 break;
+//             }
+//         }
+//     }
 
-        int a=1;
-        for(int j=1; j<nSize-i; ++j) {
-            a *= decimal;
-        }
-
-        result += (int)(n[i]-'A'+10) * a;
-    }
-
-    cout << result;
-
-    return 0;
-}
+//     cout << x << " " << y;
+// }
