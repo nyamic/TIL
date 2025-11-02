@@ -1741,3 +1741,67 @@ int main() {
 
 //     cout << x << " " << y;
 // }
+
+
+
+
+
+// #1436 영화감독 숌
+
+/*
+    0666
+    1666
+    2666
+
+    6ㅁ
+    ㅁ0
+    ㅁ1
+    ㅁ2
+    ~ㅁ9
+
+    7ㅁ
+
+
+
+    브루트포스
+    n 입력받기
+    다 넣어본다 치면... 6 연속인거 어케 판단: 엥? 하나 넣고 6연속판단까지 하라고? 이건아닌듯
+
+    !지피티가 도움!
+    666부터 시작해 1씩 올리며 문자열로 바꿔 666 포함 여부만 체크
+    count가 N이 되면 그때의 수를 출력
+*/
+
+#include <iostream>
+#include <string>
+int main() {
+    using namespace std;
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int n;
+    cin >> n;
+
+    int count = 0;
+    int i = 666;
+    while (true)
+    {
+        string s = to_string(i);
+        if (s.find("666") != string::npos)
+        {
+            count++;
+        }
+
+        if (count == n)
+        {
+            break;
+        }
+
+        i++;
+    }
+
+    cout << i;
+
+
+    return 0;
+}
