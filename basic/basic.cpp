@@ -1,9 +1,34 @@
-// #2869 달팽이는 올라가고 싶다
+// #1193 분수찾기
 
 /*
-    v보다 크거나 같을 때까지 반복: +a 확인, -b -->시간초과
-    
-    day = 1 + ((v-a) / (a-b)) 
+    1/1
+
+    1/2
+    2/1
+
+    3/1 
+    2/2 
+    1/3
+
+    1/4 j
+    2/3
+    3/2
+    4/1
+
+    i=5 j=
+    5/1 i/1
+    4/2 (x-1)/
+    3/3 (x-2)
+    2/4 (x-3)
+    1/5 (x-4)
+
+    반복: j, i 알아내기
+    분수: (i-(j-1))/j
+
+    /이게 분수로 입력이 되나흠
+
+
+    1 3 6 10 15 21 28 36 45 55
 */
 
 #include <iostream>
@@ -12,17 +37,26 @@ int main() {
     cin.tie(NULL);
     cout.tie(NULL);
 
-    int a, b, v, day;
-    cin >> a;
-    cin >> b;
-    cin >> v;
+    int i, j, cumul=0, x;
+    cin >> x;
 
-    day = 1 + ((v-a) / (a-b));
-    if (((v-a) % (a-b)) != 0) {
-        day += 1;
+    i = 1;
+    while (true) {
+        cumul += i;
+
+        if (cumul >= x) {
+            j = x - (cumul - i);
+            break;
+        }
+
+        i++;
     }
 
-    cout << day;
+    if ((i%2)==0) {
+        cout << j << "/" << i-j+1;
+    } else {
+        cout << i-j+1 << "/" << j;
+    }
 
     return 0;
 }
