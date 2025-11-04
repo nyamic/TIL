@@ -1,34 +1,21 @@
-// #1193 분수찾기
+
+// #11653 소인수분해
 
 /*
-    1/1
+    2로 나눠
+    3로 나눠
+    4로 나누면 안되겠지어차피
+    5로 나눠
 
-    1/2
-    2/1
-
-    3/1 
-    2/2 
-    1/3
-
-    1/4 j
-    2/3
-    3/2
-    4/1
-
-    i=5 j=
-    5/1 i/1
-    4/2 (x-1)/
-    3/3 (x-2)
-    2/4 (x-3)
-    1/5 (x-4)
-
-    반복: j, i 알아내기
-    분수: (i-(j-1))/j
-
-    /이게 분수로 입력이 되나흠
+    그러다 1이 되면 끝내
 
 
-    1 3 6 10 15 21 28 36 45 55
+    while
+    i=2
+    while(n%i==0){
+    i 출력
+    }
+    i++
 */
 
 #include <iostream>
@@ -37,25 +24,21 @@ int main() {
     cin.tie(NULL);
     cout.tie(NULL);
 
-    int i, j, cumul=0, x;
-    cin >> x;
+    int n, i;
+    cin >> n;
 
-    i = 1;
-    while (true) {
-        cumul += i;
-
-        if (cumul >= x) {
-            j = x - (cumul - i);
+    i = 2;
+    while(true){
+        if(n == 1) {
             break;
         }
 
-        i++;
-    }
-
-    if ((i%2)==0) {
-        cout << j << "/" << i-j+1;
-    } else {
-        cout << i-j+1 << "/" << j;
+        if ((n % i) == 0) {
+            n /= i;
+            cout << i << "\n";
+        } else {
+            i++;
+        }
     }
 
     return 0;
