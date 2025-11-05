@@ -1,43 +1,71 @@
 
-// #11653 소인수분해
+
+// #10828 스택
 
 /*
-    2로 나눠
-    3로 나눠
-    4로 나누면 안되겠지어차피
-    5로 나눠
+    n입력
+    n번반복: 명령어판단
+    명령어마다 함수
 
-    그러다 1이 되면 끝내
+    push:
+    pop
+    size
+    empty
+    top
 
-
-    while
-    i=2
-    while(n%i==0){
-    i 출력
-    }
-    i++
+    !해설지가도움!
 */
 
 #include <iostream>
-int main() {
+#include <stack>
+#include <string>
+int main()
+{
     using namespace std;
-    cin.tie(NULL);
-    cout.tie(NULL);
 
-    int n, i;
+    stack<int> s;
+    string command;
+    int n;
+    int num, result = 0;
+
     cin >> n;
 
-    i = 2;
-    while(true){
-        if(n == 1) {
-            break;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> command;
+
+        if (command == "push") {
+            cin >> num;
+            s.push(num);
         }
 
-        if ((n % i) == 0) {
-            n /= i;
-            cout << i << "\n";
-        } else {
-            i++;
+        else if (command == "pop") {
+            if (s.size() == 0) {
+                result = -1;
+                cout << result << "\n";
+            } else {
+                result = s.top();
+                cout << result << "\n";
+                s.pop();
+            }
+        }
+
+        else if (command == "size") {
+            cout << s.size() << "\n";
+        }
+
+        else if (command == "empty") {
+            cout << s.empty() << "\n";
+        }
+
+        else if (command == "top") {
+            if (s.size() == 0) {
+                result = -1;
+                cout << result << "\n";
+            } else {
+                result = s.top();
+                cout << result << "\n";
+            }
         }
     }
 
