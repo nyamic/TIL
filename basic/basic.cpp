@@ -1,4 +1,4 @@
-// #10813 공 바꾸기
+// #3052 나머지
 
 /*
 
@@ -12,31 +12,34 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int n, m;
-    cin >> n;
-    cin >> m;
-
-    int box[100];
-    for (int a = 0; a < n; a++)
+    int arr[10];
+    for (int i = 0; i < 10; i++)
     {
-        box[a] = a+1;
+        int a;
+        cin >> a;
+
+        arr[i] = a % 42;
     }
 
-    for (int b = 0; b < m; b++)
+    int n = 10;
+    for (int i = 0; i < 10; i++)
     {
-        int i, j, k;
-        cin >> i;
-        cin >> j;
+        for (int j = 0; j < i; j++)
+        {
+            if (i == j)
+            {
+                continue;
+            }
 
-        k = box[i - 1];
-        box[i - 1] = box[j - 1];
-        box[j - 1] = k;
+            if (arr[i] == arr[j])
+            {
+                n--;
+                break;
+            }
+        }
     }
 
-    for (int a = 0; a < n; a++)
-    {
-        cout << box[a] << " ";
-    }
+    cout << n;
 
     return 0;
 }
