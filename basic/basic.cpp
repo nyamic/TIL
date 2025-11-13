@@ -1,7 +1,7 @@
-// #10809 알파벳 찾기
+// #10813 공 바꾸기
 
 /*
-    배열 한 번에 같은 값으로 초기화하는 법
+
 */
 
 #include <iostream>
@@ -12,27 +12,30 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    string s;
-    cin >> s;
-    
-    int alph[26];
-    for (int i = 0; i < 26; i++)
-    {
-        alph[i] = -1;
-    }
-    
+    int n, m;
+    cin >> n;
+    cin >> m;
 
-    for (int i = 0; i < s.size(); i++)
+    int box[100];
+    for (int a = 0; a < n; a++)
     {
-        if (alph[s[i] - 'a'] == -1)
-        {
-            alph[s[i] - 'a'] = i;
-        }
+        box[a] = a+1;
     }
 
-    for (int i = 0; i < 26; i++)
+    for (int b = 0; b < m; b++)
     {
-        cout << alph[i] << " ";
+        int i, j, k;
+        cin >> i;
+        cin >> j;
+
+        k = box[i - 1];
+        box[i - 1] = box[j - 1];
+        box[j - 1] = k;
+    }
+
+    for (int a = 0; a < n; a++)
+    {
+        cout << box[a] << " ";
     }
 
     return 0;
