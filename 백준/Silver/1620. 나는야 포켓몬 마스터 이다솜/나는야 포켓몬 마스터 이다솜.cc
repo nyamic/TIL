@@ -1,3 +1,5 @@
+// 지피티 코드리뷰받고 예외처리 부분 고침
+
 #include <iostream>
 #include <unordered_map>
 #include <string>
@@ -27,17 +29,10 @@ int main()
         string s;
         cin >> s;
 
-        try
-        {
+        if (!s.empty() && isdigit(s[0])) {
             int x = stoi(s);
             cout << pokemon[x] << "\n";
-        }
-        catch (const std::invalid_argument &)
-        {
-            cout << rpokemon[s] << "\n";
-        }
-        catch (const std::out_of_range &)
-        {
+        } else {
             cout << rpokemon[s] << "\n";
         }
     }
