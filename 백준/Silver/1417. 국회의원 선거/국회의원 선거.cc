@@ -1,8 +1,8 @@
-// 한번더풀자
+//우선순위큐 예외처리 추가 
 
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#include <queue>
 using namespace std;
 
 int main()
@@ -10,36 +10,34 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
+    priority_queue<int> pq;
+
     int n;
     int dasom;
 
     cin >> n;
     cin >> dasom;
 
-    vector<int> v(n);
+    if (n == 1) {
+        cout << 0;
+        return 0;
+    }
+
     for (int i = 0; i < n - 1; i++)
     {
-        cin >> v[i];
+        int x;
+        cin >> x;
+        pq.push(x);
     }
-    v[n - 1] = 0;
-
-    sort(v.begin(), v.end(), greater<>());
 
     int count = 0;
-
-    while (true)
+    while (dasom <= pq.top())
     {
-        sort(v.begin(), v.end(), greater<>());
-        if (dasom <= v[0])
-        {
-            v[0]--;
-            dasom++;
-            count++;
-        }
-        else
-        {
-            break;
-        }
+        int x = pq.top();
+        pq.pop();
+        pq.push(x - 1);
+        dasom++;
+        count++;
     }
 
     cout << count;
